@@ -6,17 +6,23 @@ export class ZodValidationPipe implements PipeTransform {
 
   transform(value: any) {
     try {
-      this.schema.parse(value);
+      const parseValue = this.schema.parse(value);
+      return parseValue;
+
     } catch (error) {
       if (error instanceof ZodError) {
         throw new BadRequestException({
           errors: error.format(),
-          message: 'validation failed',
+          message: 'Validation failed',
           statusCode: 400,
         });
       }
-
-      throw new BadRequestException('Validation failed');
+      
+      console.error('Unexpected validation error:', error);
+        throw new BadRequestException({
+          message: 'Validation failed',
+          statusCode: 400,
+        });
     }
   }
 }
