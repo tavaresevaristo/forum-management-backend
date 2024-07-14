@@ -3,9 +3,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PrismaService } from './prisma/prisma.service';
-import { CreateAccountController } from './controllers/create-account.controller';
-import { AuthenticateController } from './controllers/authenticate.controller';
 import { DeleteUsersController } from './controllers/delete.controller';
+import { AuthenticateController } from './controllers/authenticate.controller';
+import { CreateAccountController } from './controllers/create-account.controller';
+import { CreateQuestionController } from './controllers/create-questions.controller';
 
 @Module({
   imports: [
@@ -19,9 +20,9 @@ import { DeleteUsersController } from './controllers/delete.controller';
   controllers: [
     CreateAccountController,
     AuthenticateController,
-    DeleteUsersController
+    DeleteUsersController,
+    CreateQuestionController,
   ],
   providers: [PrismaService],
 })
-
 export class AppModule {}
