@@ -1,4 +1,7 @@
-import { z } from 'zod';
+import {
+  createQuestionsBodySchema,
+  CreateQuestionsBodySchema,
+} from '@/interfaces/rest/question.dto';
 import { randomUUID } from 'crypto';
 import { payloadSchema } from 'src/auth/jwt.strategy';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -7,14 +10,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 
-const CreateQuestionsBodySchema = z
-  .object({
-    title: z.string(),
-    content: z.string(),
-  })
-  .required();
-
-type createQuestionsBodySchema = z.infer<typeof CreateQuestionsBodySchema>;
 const bodyValidationPipe = new ZodValidationPipe(CreateQuestionsBodySchema);
 
 @Controller('/questions')
@@ -42,8 +37,8 @@ export class CreateQuestionController {
     });
   }
 
-  private slugify(input: string): string {
-    const trimmedInput = input.trim();
+  private slugify(title: string): string {
+    const trimmedInput = title.trim();
     const cleaned = trimmedInput
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')

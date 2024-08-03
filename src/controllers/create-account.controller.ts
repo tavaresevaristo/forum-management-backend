@@ -4,22 +4,12 @@ import {
   UsePipes,
   Controller,
   ConflictException,
-  BadRequestException,
 } from '@nestjs/common';
-import { z } from 'zod';
 import { hash } from 'bcryptjs';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
+import { CreateAccountBodySchema, createAccountBodySchema } from '@/interfaces/rest/user.dto';
 
-const createAccountBodySchema = z
-  .object({
-    name: z.string(),
-    email: z.string().email(),
-    password: z.string(),
-  })
-  .required();
-
-type CreateAccountBodySchema = z.infer<typeof createAccountBodySchema>;
 
 @Controller('/accounts')
 export class CreateAccountController {
@@ -28,7 +18,6 @@ export class CreateAccountController {
   @Post()
   @UsePipes(new ZodValidationPipe(createAccountBodySchema))
   async handle(@Body() body: CreateAccountBodySchema) {
-
     const { name, email, password } = body;
 
     const userAlreadyExist = await this.prisma.user.findUnique({
@@ -43,13 +32,13 @@ export class CreateAccountController {
       );
     }
 
-    const hashedPassword = await hash(password, 8);
+    const passwordHashed = await hash(password, 8);
 
     await this.prisma.user.create({
       data: {
         name,
         email,
-        password: hashedPassword,
+        password: passwordHashed,
       },
     });
   }

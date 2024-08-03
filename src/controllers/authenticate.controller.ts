@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import {
   Body,
   Post,
@@ -7,17 +6,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 
+import {
+  AuthenticateBodySchema,
+  authenticateBodySchema,
+} from '@/interfaces/rest/auth.dto';
+
 import { compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 
-const authenticateBodySchema = z.object({
-  email: z.string().email(),
-  password: z.string(),
-}).required();
-
-type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>;
 
 @Controller('/sessions')
 export class AuthenticateController {
@@ -50,7 +48,7 @@ export class AuthenticateController {
     const acessToken = this.jwt.sign({ sub: user.id });
     return {
       user,
-      acess_token: acessToken
+      access_token: acessToken,
     };
   }
 }

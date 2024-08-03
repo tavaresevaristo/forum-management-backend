@@ -19,10 +19,10 @@ export class ZodValidationPipe implements PipeTransform {
       }
       
       console.error('Unexpected validation error:', error);
-        throw new BadRequestException({
-          message: 'Validation failed',
-          statusCode: 400,
-        });
+      throw new BadRequestException({
+        message: 'Validation failed',
+        statusCode: 400,
+      });
     }
   }
 }
