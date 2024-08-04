@@ -20,7 +20,7 @@ export class FetchRecentQuestionsController {
   ) {
     const perPage = 5;
 
-    const question = await this.prisma.question.findMany({
+    const questions = await this.prisma.question.findMany({
       take: perPage,
       skip: (page - 1) * perPage,
       orderBy: {
@@ -28,8 +28,8 @@ export class FetchRecentQuestionsController {
       },
     });
 
-    const total = question.length;
+    const total = questions.length;
 
-    return { question, total };
+    return { question: questions, total };
   }
 }
