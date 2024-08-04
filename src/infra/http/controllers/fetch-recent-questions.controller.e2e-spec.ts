@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { JwtService } from '@nestjs/jwt';
 import { AppModule } from '../../app.module';
 import { INestApplication } from '@nestjs/common';
-import { PrismaService } from '@/infra/prisma/prisma.service';
+import { PrismaService } from '@/infra/database/prisma/prisma.service';
 
 describe('Create question (E2E)', () => {
   let app: INestApplication;

@@ -1,5 +1,5 @@
 import { Controller, Delete } from '@nestjs/common';
-import { PrismaService } from '@/infra/prisma/prisma.service';
+import { PrismaService } from '@/infra/database/prisma/prisma.service';
 
 // rota de apagar qualquer coisa que foi no banco de forma errada.
 
