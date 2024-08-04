@@ -14,7 +14,6 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    
     "test": "vitest run",
     "test:watch": "vitest",
     "test:cov": "vitest run --coverage",
@@ -30,6 +29,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^5.16.2",
     "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.12",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
@@ -37,6 +37,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
@@ -48,6 +49,7 @@
     "@types/supertest": "^6.0.2",
     "@vitest/coverage-v8": "^2.0.5",
     "dotenv": "^16.4.5",
+    "eslint": "^9.8.0",
     "prettier": "^3.0.0",
     "prisma": "^5.16.2",
     "source-map-support": "^0.5.21",
