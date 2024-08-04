@@ -1,5 +1,5 @@
-import { ENV } from './infra/env';
-import { AppModule } from './infra/app.module';
+import { ENV } from './env';
+import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 

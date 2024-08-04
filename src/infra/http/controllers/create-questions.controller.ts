@@ -1,7 +1,4 @@
-import {
-  createQuestionsBodySchema,
-  CreateQuestionsBodySchema,
-} from '@/infra/interface/rest/question.dto';
+
 import { randomUUID } from 'crypto';
 import { payloadSchema } from '@/infra/auth/jwt.strategy';
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard';
@@ -9,6 +6,7 @@ import { UserDecorator } from '@/infra/auth/user.decorator';
 import { PrismaService } from '@/infra/prisma/prisma.service';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { createQuestionsBodySchema, CreateQuestionsBodySchema } from '../interface/rest/question.dto';
 
 const bodyValidationPipe = new ZodValidationPipe(CreateQuestionsBodySchema);
 

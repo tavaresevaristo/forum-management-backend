@@ -6,15 +6,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 
-import {
-  AuthenticateBodySchema,
-  authenticateBodySchema,
-} from '@/infra/interface/rest/auth.dto';
-
 import { compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '@/infra/prisma/prisma.service';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
+import { AuthenticateBodySchema, authenticateBodySchema } from '../interface/rest/auth.dto';
 
 
 @Controller('/sessions')

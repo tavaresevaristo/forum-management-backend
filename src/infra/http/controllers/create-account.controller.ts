@@ -8,7 +8,7 @@ import {
 import { hash } from 'bcryptjs';
 import { PrismaService } from '@/infra/prisma/prisma.service';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
-import { CreateAccountBodySchema, createAccountBodySchema } from '@/infra/interface/rest/user.dto';
+import { CreateAccountBodySchema, createAccountBodySchema } from '../interface/rest/user.dto';
 
 
 @Controller('/accounts')
