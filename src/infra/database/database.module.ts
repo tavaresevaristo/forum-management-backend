@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma.service';
-import { PrismaAnswerRepository } from './prisma/repositories/prisma-answer-repository';
-import { PrismaQuestionsRepository } from './prisma/repositories/prisma-questions-repository';
-import { PrismaAnswerCommentsRepository } from './prisma/repositories/prisma-answer-comments-repository';
-import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prisma-answer-attachments-repository';
-import { PrismaQuestionsCommentsRepository } from './prisma/repositories/prisma-question-comments.repository';
-import { PrismaQuestionsAttachmentsRepository } from './prisma/repositories/prisma-question-attachments.repository';
+import { PrismaAnswerRepository } from './prisma/repositories/answer/prisma-answer-repository';
+import { PrismaQuestionsRepository } from './prisma/repositories/question/prisma-questions-repository';
+import { PrismaAnswerCommentsRepository } from './prisma/repositories/answer/prisma-answer-comments-repository';
+import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/answer/prisma-answer-attachments-repository';
+import { PrismaQuestionsCommentsRepository } from './prisma/repositories/question/prisma-question-comments.repository';
+import { PrismaQuestionsAttachmentsRepository } from './prisma/repositories/question/prisma-question-attachments.repository';
 
 @Module({
   providers: [

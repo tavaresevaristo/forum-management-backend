@@ -1,7 +1,7 @@
 import { DomainEvents } from '@/core/events/domain-events'
 import { PaginationParams } from '@/core/repositories/pagination-params'
-import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer-attachments-repository'
-import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
+import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer/answer-attachments-repository'
+import { AnswersRepository } from '@/domain/forum/application/repositories/answer/answers-repository'
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
 
 export class InMemoryAnswersRepository implements AnswersRepository {
