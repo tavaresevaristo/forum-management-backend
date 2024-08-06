@@ -22,7 +22,4 @@ export class Student extends Entity<StudentProps> {
     const student = new Student(props, id);
     return student;
   }
-
-  
-
 }
