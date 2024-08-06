@@ -9,6 +9,14 @@ import { QuestionsRepository } from '@/domain/forum/application/repositories/que
 export class PrismaQuestionsRepository implements QuestionsRepository {
   constructor(private prisma: PrismaService) {}
 
+  async create(question: Question): Promise<void> {
+    const data = PrismaQuestionMapper.toPrisma(question);
+
+    await this.prisma.question.create({
+      data,
+    });
+  }
+
   async findById(id: string): Promise<Question | null> {
     const question = await this.prisma.question.findUnique({
       where: {
@@ -49,24 +57,15 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     return questions.map(PrismaQuestionMapper.toDomain);
   }
 
-  async create(question: Question): Promise<void> {
-    const data = PrismaQuestionMapper.toPrisma(question);
-
-    await this.prisma.question.create({
-      data,
-    });
-  }
-
   async save(question: Question): Promise<void> {
     const data = PrismaQuestionMapper.toPrisma(question);
 
     await this.prisma.question.update({
       data,
       where: {
-        id: data.id
-      }
+        id: data.id,
+      },
     });
-
   }
 
   async delete(question: Question): Promise<void> {
@@ -74,8 +73,8 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
 
     await this.prisma.question.delete({
       where: {
-        id: data.id
-      }
+        id: data.id,
+      },
     });
   }
 }

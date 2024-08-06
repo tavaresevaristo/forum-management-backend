@@ -22,7 +22,6 @@ export class PrismaQuestionMapper {
     );
   }
 
-
   static toPrisma(question: Question): Prisma.QuestionUncheckedCreateInput {
     return {
       id: question.id.toString(),
@@ -32,10 +31,7 @@ export class PrismaQuestionMapper {
       slug: question.slug.value,
       title: question.title,
       created_at: question.createdAt,
-      updated_at: question.updatedAt
-
-
-    }
+      updated_at: question.updatedAt,
+    };
   }
-
 }
