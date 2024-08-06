@@ -4,6 +4,7 @@ import {
 } from '../interface/rest/list-question.dto';
 import { JwtAuthGuard } from '@/infra/auth/jwt-auth.guard';
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { QuestionPresenter } from '../presenters/question-presenter';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/question/fetch-recent-questions';
 
@@ -18,10 +19,16 @@ export class FetchRecentQuestionsController {
   async handle(
     @Query('page', queryValidationPipe) page: PageQueryParamsSchema,
   ) {
-    const questions = await this.fetchRecenteQuestions.execute({
+    const result = await this.fetchRecenteQuestions.execute({
       page,
     });
 
-    return { questions };
+    if (result.isLeft()) {
+      throw new Error();
+    }
+
+    const questions = result.value.questions;
+
+    return { questions: questions.map(QuestionPresenter.toHTTP) };
   }
 }

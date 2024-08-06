@@ -7,14 +7,14 @@ import { QuestionAttachmentList } from './question-attachment-list';
 import { QuestionBestAnswerChosenEvent } from '@/domain/forum/enterprise/events/question-best-answer-chosen-event';
 
 export interface QuestionProps {
-  authorId: UniqueEntityID;
-  bestAnswerId?: UniqueEntityID | null;
+  slug: Slug;
   title: string;
   content: string;
-  slug: Slug;
-  attachments: QuestionAttachmentList;
   createdAt: Date;
   updatedAt?: Date | null;
+  authorId: UniqueEntityID;
+  attachments: QuestionAttachmentList;
+  bestAnswerId?: UniqueEntityID | null;
 }
 
 export class Question extends AggregateRoot<QuestionProps> {
