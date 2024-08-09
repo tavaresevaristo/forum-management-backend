@@ -1,15 +1,18 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { DeleteUsersController } from './controllers/delete.controller';
-import { AuthenticateController } from './controllers/authenticate.controller';
-import { CreateAccountController } from './controllers/create-account.controller';
-import { CreateQuestionController } from './controllers/create-questions.controller';
-import { FetchRecentQuestionsController } from './controllers/fetch-recente-question.controller';
+import { CryptographyModule } from '../cryptography/cryptography.module';
+import { AuthenticateController } from './controllers/auth/authenticate.controller';
+import { CreateAccountController } from './controllers/account/create-account.controller';
+import { CreateQuestionController } from './controllers/question/create-questions.controller';
+import { FetchRecentQuestionsController } from './controllers/question/fetch-recente-question.controller';
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/question/create-question';
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/question/fetch-recent-questions';
+import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/student/authenticate-student';
+import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/student/register-student';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, CryptographyModule],
   controllers: [
     DeleteUsersController,
     AuthenticateController,
@@ -19,7 +22,9 @@ import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-case
   ],
   providers: [
     CreateQuestionUseCase,
-    FetchRecentQuestionsUseCase
-  ]
+    FetchRecentQuestionsUseCase,
+    AuthenticateStudentUseCase,
+    RegisterStudentUseCase,
+  ],
 })
 export class HttpModule {}
