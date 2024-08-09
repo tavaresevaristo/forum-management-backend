@@ -2,9 +2,17 @@ import {
   AuthenticateBodySchema,
   authenticateBodySchema,
 } from '../../interface/rest/auth.dto';
-import { Body, Post, UsePipes, Controller } from '@nestjs/common';
+import {
+  Body,
+  Post,
+  UsePipes,
+  Controller,
+  UnauthorizedException,
+  BadRequestException,
+} from '@nestjs/common';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/student/authenticate-student';
+import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error';
 
 @Controller('/sessions')
 export class AuthenticateController {
@@ -21,7 +29,15 @@ export class AuthenticateController {
     });
 
     if (result.isLeft()) {
-      throw new Error();
+      const error = result.value;
+
+      switch (error.cause) {
+        case WrongCredentialsError:
+          throw new UnauthorizedException(error.message);
+
+        default:
+          throw new BadRequestException(error.message);
+      }
     }
 
     const { access_token } = result.value;
