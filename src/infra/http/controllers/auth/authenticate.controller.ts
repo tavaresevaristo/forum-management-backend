@@ -10,11 +10,13 @@ import {
   UnauthorizedException,
   BadRequestException,
 } from '@nestjs/common';
+import { Public } from '@/infra/auth/public';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/student/authenticate-student';
 import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error';
 
 @Controller('/sessions')
+@Public()
 export class AuthenticateController {
   constructor(private authenticateStudent: AuthenticateStudentUseCase) {}
 

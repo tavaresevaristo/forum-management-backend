@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
-import { DeleteUsersController } from './controllers/delete.controller';
 import { CryptographyModule } from '../cryptography/cryptography.module';
 import { AuthenticateController } from './controllers/auth/authenticate.controller';
 import { CreateAccountController } from './controllers/account/create-account.controller';
@@ -14,7 +13,6 @@ import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/stu
 @Module({
   imports: [DatabaseModule, CryptographyModule],
   controllers: [
-    DeleteUsersController,
     AuthenticateController,
     CreateAccountController,
     CreateQuestionController,
