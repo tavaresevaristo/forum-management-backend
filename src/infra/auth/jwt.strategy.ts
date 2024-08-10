@@ -1,7 +1,6 @@
 import { z } from 'zod';
-import { ENV } from '@/infra/env';
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { EnvService } from '../env/env-service';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
@@ -13,8 +12,8 @@ export type payloadSchema = z.infer<typeof payloadSchema>;
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(config: ConfigService<ENV, true>) {
-    const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true });
+  constructor(env: EnvService) {
+  const publicKey = env.get('JWT_PUBLIC_KEY');
 
     super({
       algorithms: ['RS256'],

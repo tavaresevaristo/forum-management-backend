@@ -3,8 +3,8 @@ import {
   Post,
   UsePipes,
   Controller,
-  BadRequestException,
   ConflictException,
+  BadRequestException,
 } from '@nestjs/common';
 
 import {
@@ -12,10 +12,10 @@ import {
   createAccountBodySchema,
 } from '../../interface/rest/user.dto';
 
+import { Public } from '@/infra/auth/public';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/student/register-student';
 import { StudentAlreadyExistError } from '@/domain/forum/application/use-cases/errors/student-already-exists-error';
-import { Public } from '@/infra/auth/public';
 
 @Controller('/accounts')
 @Public()
