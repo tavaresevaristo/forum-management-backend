@@ -19,8 +19,10 @@ model User {
   email       String        @unique
   password    String
   role        UserRole      @default(STUDENT)
+
   questions   Question[]
   answers     Answer[]
+  comments     Comment[]
 
   @@map("users")
 }
@@ -33,13 +35,14 @@ model Question {
   created_at DateTime @default(now())
   updated_at DateTime? @updatedAt()
 
-  answers Answer[]
-
   author_id  String
   best_answer_id String? @unique
 
+  answers Answer[]
   author User @relation(fields: [author_id], references: [id])
   bestAnswer Answer? @relation("bestAnswer", fields: [best_answer_id], references: [id])
+  comments Comment[]
+  attachments Attachment[]
 
   @@map("questions")
 }
@@ -49,12 +52,48 @@ model Answer {
   content   String
   created_at DateTime @default(now())
   updated_at DateTime? @updatedAt()
+
   author_id  String
   question_id String
 
   author      User        @relation(fields: [author_id], references: [id])
-  question    Question   @relation(fields: [question_id], references: [id])
   best_answer_on    Question?     @relation("bestAnswer")
+  question    Question   @relation(fields: [question_id], references: [id])
+  comments     Comment[]
+  attachments Attachment[]
 
   @@map("answers")
+}
+
+model Comment {
+  id String @id @default(uuid())
+  content String
+  created_at DateTime   @default(now())
+  updated_at DateTime?  @updatedAt()
+
+  author_id String 
+  question_id String?
+  answer_id String?
+  attachments_id String?
+
+  author User @relation(fields: [author_id], references: [id])
+  question Question? @relation(fields: [question_id], references: [id])
+  answer Answer? @relation(fields: [answer_id], references: [id])
+
+  @@map("comments")
+}
+
+
+model Attachment {
+  id         String     @id   @default(uuid())
+  title      String
+  url        String
+
+  question_id String?
+  answer_id String?
+
+  question Question? @relation(fields: [question_id], references: [id])
+  answer Answer? @relation(fields: [answer_id], references: [id])
+
+  @@map("attachments")
 }
