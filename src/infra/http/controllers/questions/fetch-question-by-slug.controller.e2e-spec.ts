@@ -31,7 +31,7 @@ describe('Fetch questions by slug', () => {
     await app.init();
   });
 
-  test('GET[] /question/:slug', async () => {
+  test('[GET] /question/:slug', async () => {
     const user = await studentFactory.makePrismaStudent();
 
     const access_token = jwt.sign({ sub: user.id.toString() });

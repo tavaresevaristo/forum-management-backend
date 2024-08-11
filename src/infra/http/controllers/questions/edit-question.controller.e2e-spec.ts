@@ -30,7 +30,7 @@ describe('Edit question (E2E)', () => {
     await app.init();
   });
 
-  test('Get[] / question', async () => {
+  test('[PUT] /question/:id', async () => {
     const user = await studentFactory.makePrismaStudent();
 
     const access_token = jwt.sign({ sub: user.id.toString() });
