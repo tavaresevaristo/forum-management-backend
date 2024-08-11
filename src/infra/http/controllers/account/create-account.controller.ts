@@ -17,7 +17,7 @@ import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/student/register-student';
 import { StudentAlreadyExistError } from '@/domain/forum/application/use-cases/errors/student-already-exists-error';
 
-@Controller('/accounts')
+@Controller('/account')
 @Public()
 export class CreateAccountController {
   constructor(private registerStudent: RegisterStudentUseCase) {}

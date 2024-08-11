@@ -43,7 +43,7 @@ describe('Fetch questions by slug', () => {
     });
 
     const response = await request(app.getHttpServer())
-      .get('/questions/question-01')
+      .get('/question/question-01')
       .set('Authorization', `Bearer ${access_token}`)
       .send();
 

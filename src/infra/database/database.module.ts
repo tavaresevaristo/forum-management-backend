@@ -18,12 +18,6 @@ import { QuestionAttachmentsRepository } from '@/domain/forum/application/reposi
 @Module({
   providers: [
     PrismaService,
-    PrismaAnswerRepository,
-    PrismaAnswerCommentsRepository,
-    PrismaAnswerAttachmentsRepository,
-    PrismaQuestionsCommentsRepository,
-    PrismaQuestionsAttachmentsRepository,
-
     {
       provide: StudentRepository,
       useClass: PrismaStudentRepository,
@@ -58,16 +52,9 @@ import { QuestionAttachmentsRepository } from '@/domain/forum/application/reposi
     PrismaService,
     StudentRepository,
     AnswersRepository,
-
     QuestionsRepository,
     QuestionCommentsRepository,
     QuestionAttachmentsRepository,
-
-    PrismaAnswerRepository,
-    PrismaAnswerCommentsRepository,
-    PrismaAnswerAttachmentsRepository,
-    PrismaQuestionsCommentsRepository,
-    PrismaQuestionsAttachmentsRepository,
   ],
 })
 export class DatabaseModule {}

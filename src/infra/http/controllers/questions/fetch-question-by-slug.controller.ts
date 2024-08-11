@@ -2,7 +2,7 @@ import { QuestionPresenter } from '../../presenters/question-presenter';
 import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
 import { FetchQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/question/fetch-question-by-slug';
 
-@Controller('/questions/:slug')
+@Controller('/question/:slug')
 export class FetchQuestionBySlugController {
   constructor(private fetchQuestion: FetchQuestionBySlugUseCase) {}
 

@@ -11,7 +11,7 @@ import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-case
 
 const queryValidationPipe = new ZodValidationPipe(pageQueryParamsSchema);
 
-@Controller('/questions')
+@Controller('/question')
 export class FetchRecentQuestionsController {
   constructor(private fetchRecenteQuestions: FetchRecentQuestionsUseCase) {}
 

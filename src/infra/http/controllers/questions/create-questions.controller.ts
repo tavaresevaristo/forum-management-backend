@@ -10,7 +10,7 @@ import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/ques
 
 const bodyValidationPipe = new ZodValidationPipe(CreateQuestionsBodySchema);
 
-@Controller('/questions')
+@Controller('/question')
 export class CreateQuestionController {
   constructor(private createQuestion: CreateQuestionUseCase) {}
 

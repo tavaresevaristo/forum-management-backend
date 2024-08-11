@@ -27,7 +27,7 @@ describe('Create question (E2E)', () => {
     await app.init();
   });
 
-  test('POST[] / questions', async () => {
+  test('POST[] / question', async () => {
     const user = await studentFactory.makePrismaStudent();
 
     const access_token = jwt.sign({ sub: user.id.toString() });
@@ -38,7 +38,7 @@ describe('Create question (E2E)', () => {
     };
 
     const response = await request(app.getHttpServer())
-      .post('/questions')
+      .post('/question')
       .set('Authorization', `Bearer ${access_token}`)
       .send(post);
 
