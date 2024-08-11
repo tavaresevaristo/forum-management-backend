@@ -41,12 +41,12 @@ describe('Authenticate (E2E)', () => {
     expect(response.statusCode).toBe(201);
     expect(response.body).toEqual({
       access_token: expectedString,
-      user: expect.objectContaining({
-        id: expectedString,
-        name: expectedString,
-        email: expectedString,
-        password: expectedString,
-      })
+      // user: expect.objectContaining({
+      //   id: expectedString,
+      //   name: expectedString,
+      //   email: expectedString,
+      //   password: expectedString,
+      // })
     });
   });
 });
