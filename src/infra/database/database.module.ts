@@ -53,7 +53,9 @@ import { QuestionAttachmentsRepository } from '@/domain/forum/application/reposi
     StudentRepository,
     AnswersRepository,
     QuestionsRepository,
+    AnswerAttachmentsRepository,
     QuestionCommentsRepository,
+    AnswerCommentsRepository,
     QuestionAttachmentsRepository,
   ],
 })
