@@ -7,7 +7,7 @@ import { StudentFactory } from 'test/factories/make-student';
 import { QuestionFactory } from 'test/factories/make-question';
 import { DatabaseModule } from '@/infra/database/database.module';
 
-describe('Create question (E2E)', () => {
+describe('Fetch question (E2E)', () => {
   let app: INestApplication;
   let jwt: JwtService;
   let studentFactory: StudentFactory;
