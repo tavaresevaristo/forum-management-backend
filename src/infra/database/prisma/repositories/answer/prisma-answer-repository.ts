@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
-import { Answer } from '@/domain/forum/enterprise/entities/answer';
+import { Answer } from '@/domain/forum/enterprise/entities/answer/answer';
 import { PaginationParams } from '@/core/repositories/pagination-params';
 import { PrismaAnswerMapper } from '../../mappers/prisma-answer-mapper';
 import { AnswersRepository } from '@/domain/forum/application/repositories/answer/answers-repository';

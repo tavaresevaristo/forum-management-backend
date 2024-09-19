@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Either, left, right } from '@/core/either';
 import { HashGenerator } from '../../cyptography/hash-generator';
-import { Student } from '@/domain/forum/enterprise/entities/student';
+import { Student } from '@/domain/forum/enterprise/entities/student/student';
 import { StudentAlreadyExistError } from '../errors/student-already-exists-error';
 import { StudentRepository } from '../../repositories/student/student-repository';
 

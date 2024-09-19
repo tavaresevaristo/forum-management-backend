@@ -31,16 +31,10 @@ export class AuthenticateStudentUseCase {
   }: AuthenticateStudentUseCaseRequest): Promise<AuthenticateStudentUseCaseResponse> {
     const student = await this.studentRepository.findByEmail(email);
 
-    if (!student) {
-      return left(new WrongCredentialsError());
-    }
-
-    const isPasswordValid = await this.hashCompare.compare(
-      password,
-      student.password,
-    );
-
-    if (!isPasswordValid) {
+    if (
+      !student ||
+      !(await this.hashCompare.compare(password, student.password))
+    ) {
       return left(new WrongCredentialsError());
     }
 
@@ -48,8 +42,6 @@ export class AuthenticateStudentUseCase {
       sub: student.id.toString(),
     });
 
-    return right({
-      access_token,
-    });
+    return right({ access_token });
   }
 }

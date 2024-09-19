@@ -9,6 +9,7 @@ import {
   Controller,
   UnauthorizedException,
   BadRequestException,
+  HttpCode,
 } from '@nestjs/common';
 import { Public } from '@/infra/auth/public';
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe';
@@ -21,6 +22,7 @@ export class AuthenticateController {
   constructor(private authenticateStudent: AuthenticateStudentUseCase) {}
 
   @Post()
+  @HttpCode(200)
   @UsePipes(new ZodValidationPipe(authenticateBodySchema))
   async handle(@Body() body: AuthenticateBodySchema) {
     const { email, password } = body;
@@ -43,6 +45,7 @@ export class AuthenticateController {
     }
 
     const { access_token } = result.value;
+
     return {
       access_token,
     };

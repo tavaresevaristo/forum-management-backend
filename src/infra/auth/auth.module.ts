@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './jwt.strategy';
-import { PassportModule } from '@nestjs/passport';
 import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './jwt-auth.guard';
-import { EnvService } from '../env/env-service';
+import { JwtStrategy } from './jwt.strategy';
 import { EnvModule } from '../env/env.module';
+import { EnvService } from '../env/env-service';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { EnvModule } from '../env/env.module';
       inject: [EnvService],
       global: true,
       imports: [EnvModule],
-      useFactory(env: EnvService) { 
+      useFactory(env: EnvService) {
         const privateKey = env.get('JWT_PRIVATE_KEY');
         const publicKey = env.get('JWT_PUBLIC_KEY');
 
@@ -32,7 +32,7 @@ import { EnvModule } from '../env/env.module';
       useClass: JwtAuthGuard,
     },
     JwtStrategy,
-    EnvService
+    EnvService,
   ],
 })
 export class AuthModule {}

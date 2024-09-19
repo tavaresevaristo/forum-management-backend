@@ -1,6 +1,6 @@
 import { Either, right } from '@/core/either';
 import { Injectable } from '@nestjs/common';
-import { Answer } from '@/domain/forum/enterprise/entities/answer';
+import { Answer } from '@/domain/forum/enterprise/entities/answer/answer';
 import { AnswersRepository } from '../../repositories/answer/answers-repository';
 
 interface FetchQuestionAnswersUseCaseRequest {

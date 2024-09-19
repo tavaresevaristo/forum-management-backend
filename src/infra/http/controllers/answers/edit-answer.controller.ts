@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import {
   Put,
   Body,
@@ -7,6 +6,7 @@ import {
   Controller,
   BadRequestException,
 } from '@nestjs/common';
+import { z } from 'zod';
 import { payloadSchema } from '@/infra/auth/jwt.strategy';
 import { UserDecorator } from '@/infra/auth/user.decorator';
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe';

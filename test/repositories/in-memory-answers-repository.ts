@@ -2,7 +2,7 @@ import { DomainEvents } from '@/core/events/domain-events'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer/answer-attachments-repository'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answer/answers-repository'
-import { Answer } from '@/domain/forum/enterprise/entities/answer'
+import { Answer } from '@/domain/forum/enterprise/entities/answer/answer'
 
 export class InMemoryAnswersRepository implements AnswersRepository {
   public items: Answer[] = []

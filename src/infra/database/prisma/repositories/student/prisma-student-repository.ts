@@ -1,5 +1,5 @@
 import { StudentRepository } from '@/domain/forum/application/repositories/student/student-repository';
-import { Student } from '@/domain/forum/enterprise/entities/student';
+import { Student } from '@/domain/forum/enterprise/entities/student/student';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
 import { PrismaStudentMapper } from '../../mappers/prisma-student.mapper';

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Either, right } from '@/core/either'
-import { Answer } from '../../../enterprise/entities/answer'
+import { Answer } from '../../../enterprise/entities/answer/answer'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { AnswersRepository } from '../../repositories/answer/answers-repository'
 import { AnswerAttachment } from '../../../enterprise/entities/answer-attachment'

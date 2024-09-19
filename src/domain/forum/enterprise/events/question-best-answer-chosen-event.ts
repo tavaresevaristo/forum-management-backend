@@ -1,6 +1,6 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { DomainEvent } from '@/core/events/domain-event'
-import { Question } from '../entities/question'
+import { Question } from '../entities/question/question'
 
 export class QuestionBestAnswerChosenEvent implements DomainEvent {
   public ocurredAt: Date

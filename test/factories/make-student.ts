@@ -2,7 +2,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import {
   Student,
   StudentProps,
-} from '@/domain/forum/enterprise/entities/student';
+} from '@/domain/forum/enterprise/entities/student/student';
 import { PrismaStudentMapper } from '@/infra/database/prisma/mappers/prisma-student.mapper';
 import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { faker } from '@faker-js/faker';

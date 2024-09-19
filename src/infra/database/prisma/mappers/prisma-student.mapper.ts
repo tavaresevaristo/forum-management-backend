@@ -1,5 +1,5 @@
 import { Prisma, User as PrismaUser } from '@prisma/client';
-import { Student } from '@/domain/forum/enterprise/entities/student';
+import { Student } from '@/domain/forum/enterprise/entities/student/student';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 
 export class PrismaStudentMapper {

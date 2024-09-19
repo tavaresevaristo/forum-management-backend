@@ -1,4 +1,4 @@
-import { Student } from '@/domain/forum/enterprise/entities/student';
+import { Student } from '@/domain/forum/enterprise/entities/student/student';
 
 export abstract class StudentRepository {
   abstract findByEmail(email: string): Promise<Student | null>;

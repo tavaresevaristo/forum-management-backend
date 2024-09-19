@@ -1,5 +1,5 @@
 import { Answer as AnswerPrisma, Prisma } from '@prisma/client';
-import { Answer } from '@/domain/forum/enterprise/entities/answer';
+import { Answer } from '@/domain/forum/enterprise/entities/answer/answer';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 
 export class PrismaAnswerMapper {
