@@ -1,19 +1,21 @@
-import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
-import { Either, right } from '@/core/either'
-import { AnswerCommentsRepository } from '../../repositories/answer/answer-comments-repository'
+import { Injectable } from '@nestjs/common';
+import { Either, right } from '@/core/either';
+import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment';
+import { AnswerCommentsRepository } from '../../repositories/answer/answer-comments-repository';
 
 interface FetchAnswerCommentsUseCaseRequest {
-  answerId: string
-  page: number
+  page: number;
+  answerId: string;
 }
 
 type FetchAnswerCommentsUseCaseResponse = Either<
   null,
   {
-    answerComments: AnswerComment[]
+    answerComments: AnswerComment[];
   }
->
+>;
 
+@Injectable()
 export class FetchAnswerCommentsUseCase {
   constructor(private answerCommentsRepository: AnswerCommentsRepository) {}
 
@@ -24,10 +26,10 @@ export class FetchAnswerCommentsUseCase {
     const answerComments =
       await this.answerCommentsRepository.findManyByAnswerId(answerId, {
         page,
-      })
+      });
 
     return right({
       answerComments,
-    })
+    });
   }
 }
