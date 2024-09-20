@@ -22,8 +22,6 @@ export class ChooseBestAnswerQuestionController {
     @Param('answerId') answerId: string,
   ) {
     const userId = user.sub;
-    console.log('userId:', userId, 'answerId:', answerId);
-
     const result = await this.chooseBestAnswerQuestion.execute({
       authorId: userId,
       answerId,
