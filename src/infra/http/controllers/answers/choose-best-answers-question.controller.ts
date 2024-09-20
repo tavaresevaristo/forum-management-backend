@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/question/choose-question-best-answer';
 
-@Controller('answer/:answerId/choose-as-best')
+@Controller('answer/:id/choose-as-best')
 export class ChooseBestAnswerQuestionController {
   constructor(
     private chooseBestAnswerQuestion: ChooseQuestionBestAnswerUseCase,
@@ -19,7 +19,7 @@ export class ChooseBestAnswerQuestionController {
   @HttpCode(204)
   async handle(
     @UserDecorator() user: payloadSchema,
-    @Param('answerId') answerId: string,
+    @Param('id') answerId: string,
   ) {
     const userId = user.sub;
     const result = await this.chooseBestAnswerQuestion.execute({

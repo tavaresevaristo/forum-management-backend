@@ -1,11 +1,10 @@
-
 import {
   Body,
+  Post,
   Param,
   HttpCode,
   Controller,
   BadRequestException,
-  Post
 } from '@nestjs/common';
 import { z } from 'zod';
 import { payloadSchema } from '@/infra/auth/jwt.strategy';
@@ -19,7 +18,7 @@ const commentOnAnswerBodSchema = z.object({
 const bodyValidationPipe = new ZodValidationPipe(commentOnAnswerBodSchema);
 type CommentOnAnswerBodSchema = z.infer<typeof commentOnAnswerBodSchema>;
 
-@Controller('/answer/:answerId/comments')
+@Controller('/answer/:id/comments')
 export class CommentOnAnswerController {
   constructor(private answerComment: CommentOnAnswerUseCase) {}
 
@@ -28,7 +27,7 @@ export class CommentOnAnswerController {
   async handle(
     @Body(bodyValidationPipe) body: CommentOnAnswerBodSchema,
     @UserDecorator() user: payloadSchema,
-    @Param('answerId') answerId: string,
+    @Param('id') answerId: string,
   ) {
     const userId = user.sub;
     const { content } = body;

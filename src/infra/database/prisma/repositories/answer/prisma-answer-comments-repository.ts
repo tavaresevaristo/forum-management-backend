@@ -58,7 +58,7 @@ export class PrismaAnswerCommentsRepository
 
     await this.prisma.comment.delete({
       where: {
-        id: data.id,
+        id: data.id?.toString(),
       },
     });
   }

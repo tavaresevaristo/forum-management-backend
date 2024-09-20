@@ -21,7 +21,7 @@ type CreateAnswerQuestionBodySchema = z.infer<
   typeof createAnswerQuestionBodySchema
 >;
 
-@Controller('/question/:questionId/answer')
+@Controller('/question/:id/answer')
 export class AnswerQuestionController {
   constructor(private answerQuestion: AnswerQuestionUseCase) {}
 
@@ -29,7 +29,7 @@ export class AnswerQuestionController {
   async handle(
     @Body(bodyValidationPipe) body: CreateAnswerQuestionBodySchema,
     @UserDecorator() user: payloadSchema,
-    @Param('questionId') questionId: string,
+    @Param('id') questionId: string,
   ) {
     const { content } = body;
     const userId = user.sub;

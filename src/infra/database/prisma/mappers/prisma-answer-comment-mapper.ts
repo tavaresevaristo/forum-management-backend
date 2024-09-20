@@ -4,7 +4,7 @@ import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment
 
 export class PrismaAnswersCommentMapper {
   static toDomain(raw: PrismaComment): AnswerComment {
-    if (!raw.question_id) {
+    if (!raw.answer_id) {
       throw new Error('Invalid Comment type.');
     }
 

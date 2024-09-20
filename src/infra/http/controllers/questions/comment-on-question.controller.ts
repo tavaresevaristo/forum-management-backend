@@ -18,7 +18,7 @@ const commentOnQuestionBodSchema = z.object({
 const bodyValidationPipe = new ZodValidationPipe(commentOnQuestionBodSchema);
 type CommentOnQuestionBodSchema = z.infer<typeof commentOnQuestionBodSchema>;
 
-@Controller('/question/:questionId/comments')
+@Controller('/question/:id/comments')
 export class CommentOnQuestionController {
   constructor(private commentOnQuestion: CommentOnQuestionUseCase) {}
 
@@ -27,7 +27,7 @@ export class CommentOnQuestionController {
   async handle(
     @Body(bodyValidationPipe) body: CommentOnQuestionBodSchema,
     @UserDecorator() user: payloadSchema,
-    @Param('questionId') questionId: string,
+    @Param('id') questionId: string,
   ) {
     const userId = user.sub;
     const { content } = body;
