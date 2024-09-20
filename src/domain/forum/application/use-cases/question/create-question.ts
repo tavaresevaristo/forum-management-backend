@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Either, right } from '@/core/either';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
-import { Question } from '@/domain/forum/enterprise/entities/question';
 import { QuestionsRepository } from '../../repositories/question/questions-repository';
 import { QuestionAttachment } from '@/domain/forum/enterprise/entities/question-attachment';
 import { QuestionAttachmentList } from '@/domain/forum/enterprise/entities/question-attachment-list';
+import { Question } from '@/domain/forum/enterprise/entities/question/question';
 
 interface CreateQuestionUseCaseRequest {
   title: string;

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Either, left, right } from '@/core/either';
-import { Question } from '@/domain/forum/enterprise/entities/question';
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error';
 import { AnswersRepository } from '../../repositories/answer/answers-repository';
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error';
 import { QuestionsRepository } from '../../repositories/question/questions-repository';
+import { Question } from '@/domain/forum/enterprise/entities/question/question';
 
 interface ChooseQuestionBestAnswerUseCaseRequest {
   authorId: string;

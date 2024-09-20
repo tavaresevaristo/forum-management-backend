@@ -4,7 +4,7 @@ import { QuestionComment } from '@/domain/forum/enterprise/entities/question-com
 
 export class PrismaQuestionCommentMapper {
   static toDomain(raw: PrismaComment): QuestionComment {
-    if (!raw.answer_id) {
+    if (!raw.question_id) {
       throw new Error('Invalid Comment type.');
     }
 
@@ -25,7 +25,7 @@ export class PrismaQuestionCommentMapper {
   ): Prisma.CommentUncheckedCreateInput {
     return {
       id: question.id.toString(),
-      content: question.authorId.toString(),
+      content: question.content,
       question_id: question.questionId.toString(),
       author_id: question.authorId.toString(),
       created_at: question.createdAt,

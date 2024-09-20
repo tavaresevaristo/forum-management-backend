@@ -1,7 +1,7 @@
 import { Either, right } from '@/core/either';
-import { Question } from '@/domain/forum/enterprise/entities/question';
 import { QuestionsRepository } from '../../repositories/question/questions-repository';
 import { Injectable } from '@nestjs/common';
+import { Question } from '@/domain/forum/enterprise/entities/question/question';
 
 interface FetchRecentQuestionsUseCaseRequest {
   page: number;

@@ -1,13 +1,12 @@
 import { faker } from '@faker-js/faker';
 import { Injectable } from '@nestjs/common';
 
-import {
-  Question,
-  QuestionProps,
-} from '@/domain/forum/enterprise/entities/question';
+
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { PrismaQuestionMapper } from '@/infra/database/prisma/mappers/prisma-question-mapper';
+import { QuestionProps } from '@/domain/forum/enterprise/entities/question/types';
+import { Question } from '@/domain/forum/enterprise/entities/question/question';
 
 export function makeQuestion(
   override: Partial<QuestionProps> = {},

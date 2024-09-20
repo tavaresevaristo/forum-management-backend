@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Either, left, right } from '@/core/either';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
-import { Question } from '@/domain/forum/enterprise/entities/question';
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error';
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error';
 import { QuestionsRepository } from '../../repositories/question/questions-repository';
 import { QuestionAttachment } from '@/domain/forum/enterprise/entities/question-attachment';
 import { QuestionAttachmentList } from '@/domain/forum/enterprise/entities/question-attachment-list';
 import { QuestionAttachmentsRepository } from '../../repositories/question/question-attachments-repository';
+import { Question } from '@/domain/forum/enterprise/entities/question/question';
 
 interface EditQuestionUseCaseRequest {
   title: string;
