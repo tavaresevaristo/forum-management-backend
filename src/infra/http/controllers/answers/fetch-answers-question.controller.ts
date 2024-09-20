@@ -9,7 +9,7 @@ import {
 import {
   queryValidationPipe,
   PageQueryParamsSchema,
-} from '../../interface/rest/list-question.dto';
+} from '../../interface/rest/list.dto';
 import { AnswerPresenter } from '../../presenters/answer-presenter';
 import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/answer-question/fetch-question-answers';
 

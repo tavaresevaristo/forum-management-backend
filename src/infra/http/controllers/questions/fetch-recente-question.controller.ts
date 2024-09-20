@@ -3,7 +3,7 @@ import { Get, Query, Controller, BadRequestException } from '@nestjs/common';
 import {
   PageQueryParamsSchema,
   queryValidationPipe
-} from '../../interface/rest/list-question.dto';
+} from '../../interface/rest/list.dto';
 
 import { QuestionPresenter } from '../../presenters/question-presenter';
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/question/fetch-recent-questions';
