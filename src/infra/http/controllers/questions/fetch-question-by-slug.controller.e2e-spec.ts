@@ -9,7 +9,7 @@ import { DatabaseModule } from '@/infra/database/database.module';
 import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug';
 
-describe('Fetch questions by slug', () => {
+describe('Fetch questions by slug (E2E)', () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let jwt: JwtService;
