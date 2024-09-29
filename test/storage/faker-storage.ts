@@ -1,13 +1,7 @@
-import {
-  Uploader,
-  UploadParams,
-} from '@/domain/forum/application/storage/uploader';
+import { Uploader } from '@/domain/forum/application/storage/uploader';
+import { IUpload } from './types';
 import { randomUUID } from 'crypto';
-
-interface IUpload {
-  fileName: string;
-  url: string;
-}
+import { UploadParams } from '@/domain/forum/application/storage/types';
 
 export class FakeUploader implements Uploader {
   public uploads: IUpload[] = [];
