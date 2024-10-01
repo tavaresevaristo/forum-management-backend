@@ -28,14 +28,14 @@ export class EditQuestionController {
     @Param('id') questionId: string,
   ) {
     const userId = user.sub;
-    const { title, content } = body;
+    const { title, content, attachments } = body;
 
     const result = await this.editQuestion.execute({
       title,
       content,
       questionId,
       authorId: userId,
-      attachmentsIds: [],
+      attachmentsIds: attachments,
     });
 
     if (result.isLeft()) {

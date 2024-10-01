@@ -121,5 +121,6 @@ describe('Edit Question', () => {
     });
 
     expect(result.isRight()).toBe(true);
+    // expect(inMemoryQuestionAttachmentsRepository.items).toHaveLength(2);
   });
 });
