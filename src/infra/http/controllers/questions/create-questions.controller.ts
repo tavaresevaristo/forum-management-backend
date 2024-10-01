@@ -19,15 +19,14 @@ export class CreateQuestionController {
     @Body(bodyValidationPipe) body: createQuestionsBodySchema,
     @UserDecorator() user: payloadSchema,
   ) {
-    
     const userId = user.sub;
-    const { title, content } = body;
-
+    const { title, content, attachments } = body;
+    
     await this.createQuestion.execute({
       title,
       content,
       authorId: userId,
-      attachmentsIds: [],
+      attachmentsIds: attachments,
     });
   }
 }
