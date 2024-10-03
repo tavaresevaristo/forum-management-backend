@@ -13,6 +13,7 @@ import {
 
 import { CommentPresenter } from '../../presenters/comment-presenter';
 import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/answer/fetch-answer-comments';
+import { CommentWithAuthorPresenter } from '../../presenters/comment-with-author-presenter';
 
 @Controller('/answer/:id/comments')
 export class FetchAnswerCommentsController {
@@ -32,8 +33,8 @@ export class FetchAnswerCommentsController {
       throw new BadRequestException();
     }
 
-    const answerComments = result.value.answerComments;
+    const comments = result.value.comments;
 
-    return { comments: answerComments.map(CommentPresenter.toHttp) };
+    return { comments: comments.map(CommentWithAuthorPresenter.toHttp) };
   }
 }
