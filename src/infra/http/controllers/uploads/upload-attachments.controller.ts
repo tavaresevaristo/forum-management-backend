@@ -12,8 +12,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('/attachments')
 export class UploadAttachmentsController {
-  // contructor
-
   @Post()
   @HttpCode(201)
   @UseInterceptors(FileInterceptor('file'))
@@ -21,13 +19,13 @@ export class UploadAttachmentsController {
     @UploadedFile(
       new ParseFilePipe({
         validators: [
-          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 2 }),  // 2mb
+          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 2 }), // 2mb
           new FileTypeValidator({ fileType: '.(png|jpg|jpeg|pdf)' }),
         ],
       }),
     )
     file: Express.Multer.File,
   ) {
-    console.log("file sended: ", file);
+    console.log('file sended: ', file);
   }
 }
