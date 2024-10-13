@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
-import { EnvService } from '@/infra/env/env-service';
 import { EnvModule } from '@/infra/env/env.module';
+import { RedisCacheRepository } from './redis-cache-repository';
+import { CacheRepository } from '../cache-repositor';
+import { RedisService } from './redis.service';
 
 @Module({
   imports: [EnvModule],
-  providers: [EnvService],
+  providers: [RedisService,
+    {
+      provide: CacheRepository,
+      useClass: RedisCacheRepository
+    }
+  ],
+  exports: [CacheRepository]
 })
 export class CacheModule {}
