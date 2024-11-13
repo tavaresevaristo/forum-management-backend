@@ -29,18 +29,19 @@ describe('Upload attachments (E2E)', () => {
   });
 
   test('[POST] /attachments', async () => {
-
     const user = await studentFactory.makePrismaStudent();
     const access_token = jwt.sign({ sub: user.id.toString() });
 
     const response = await request(app.getHttpServer())
       .post('/attachments')
       .set('Authorization', `Bearer ${access_token}`)
-      .attach("file", "./test/e2e/tavares.jpg");
+      .attach('file', './test/e2e/tavares.jpg');
 
     expect(response.statusCode).toBe(201);
-
-
-    
+    expect(response.body).toEqual({
+      attachments_id: {
+        value: expect.any(String),
+      },
+    });
   });
 });

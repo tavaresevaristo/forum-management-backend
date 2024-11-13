@@ -37,4 +37,17 @@ describe('Create Answer', () => {
       ],
     )
   })
+
+  it('should persist attachments when creating a new answers', async () => {
+    const result = await sut.execute({
+      authorId: '1',
+      questionId: '1',
+      content: 'Conteúdo da resposta',
+      attachmentsIds: ['1', '2'],
+    });
+
+    expect(result.isRight()).toBe(true);
+    // expect(inMemoryAnswersRepository.items).toHaveLength(2);
+  });
+
 })

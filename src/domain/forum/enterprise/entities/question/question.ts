@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
+import { QuestionProps } from './types';
 import { Slug } from '../value-objects/slug';
 import { Optional } from '@/core/types/optional';
 import { AggregateRoot } from '@/core/entities/aggregate-root';
 import { UniqueEntityID } from '@/core/entities/unique-entity-id';
 import { QuestionAttachmentList } from '../question-attachment-list';
 import { QuestionBestAnswerChosenEvent } from '@/domain/forum/enterprise/events/question-best-answer-chosen-event';
-import { QuestionProps } from './types';
 
 export class Question extends AggregateRoot<QuestionProps> {
   get authorId() {

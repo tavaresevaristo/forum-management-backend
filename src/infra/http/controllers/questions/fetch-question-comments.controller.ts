@@ -11,7 +11,7 @@ import {
   PageQueryParamsSchema,
 } from '../../interface/rest/list.dto';
 
-import { CommentPresenter } from '../../presenters/comment-presenter';
+import { CommentWithAuthorPresenter } from '../../presenters/comment-with-author-presenter';
 import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/question/fetch-question-comments';
 
 @Controller('/question/:id/comments')
@@ -32,8 +32,8 @@ export class FetchQuestionCommentsController {
       throw new BadRequestException();
     }
 
-    const questionComments = result.value.questionComments;
+    const comments = result.value.comments;
 
-    return { comments: questionComments.map(CommentPresenter.toHttp) };
+    return { comments: comments.map(CommentWithAuthorPresenter.toHttp) };
   }
 }
