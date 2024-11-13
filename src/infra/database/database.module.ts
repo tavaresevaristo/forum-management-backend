@@ -16,8 +16,10 @@ import { PrismaQuestionsAttachmentsRepository } from './prisma/repositories/ques
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question/question-attachments-repository';
 import { AttachmentsRepository } from '@/domain/forum/application/repositories/attachments/attachments-repository';
 import { PrismaAttachmentsRepository } from './prisma/repositories/attachments/prisma-attachments-repository';
+import { CacheModule } from '../cache/redis/redis.module';
 
 @Module({
+  imports: [CacheModule],
   providers: [
     PrismaService,
     {

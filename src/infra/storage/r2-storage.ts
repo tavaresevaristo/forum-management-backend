@@ -38,7 +38,7 @@ export class R2Storage implements Uploader {
     //   }),
     // );
 
-    // console.log("C H E G U E I")
+    console.log("C H E G U E I")
 
     return {
       url: uniqueFileName,
